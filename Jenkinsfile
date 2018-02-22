@@ -18,19 +18,20 @@ pipeline {
             }
         }
         
-        // stage('Test') {
-        //     steps {
-        //         withDockerContainer(image: 'node:8.9.3-alpine') {
-        //             sh 'yarn install'
-        //             // sh 'printenv'
-        //             script {
-        //                 commit_id = readFile('.git/commit-id')
-        //             }
-        //             echo "COMMIT ID: ${commit_id}"
-        //             sh 'npm test'
-        //         }
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                withDockerContainer(image: 'node:8.9.3-alpine') {
+                    // sh 'yarn install'
+                    // sh 'printenv'
+                    script {
+                        commit_id = readFile('.git/commit-id')
+                    }
+                    echo "COMMIT ID: ${commit_id}"
+                    // TODO add unit tests
+                    // sh 'npm test'
+                }
+            }
+        }
 
         stage('Build') {
             steps {
