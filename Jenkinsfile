@@ -46,7 +46,7 @@ pipeline {
         stage('Push') {
             steps {
                 withDockerRegistry(url: 'https://local.dtr', credentialsId: 'dtr-credentials') {
-                    sh "docker push local.dtr/viseo/demo-app:${commit_id}"
+                    sh "docker push local.dtr/viseo/demo-web-app:${commit_id}"
                 }
             }
         }
