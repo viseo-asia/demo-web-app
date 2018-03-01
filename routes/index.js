@@ -6,9 +6,12 @@ const Lynx = require('lynx')
 const metrics = new Lynx('telegraf', 8125)
 
 // secrets
-const fs = require('fs')
-const dbUsername = fs.readFileSync('/run/secrets/database_username')
-const dbPassword = fs.readFileSync('/run/secrets/database_password')
+//TODO:rudijs add nconf module to read these files
+// const fs = require('fs')
+// const dbUsername = fs.readFileSync('/run/secrets/database_username')
+// const dbPassword = fs.readFileSync('/run/secrets/database_password')
+const dbUsername = '/run/secrets/database_username'
+const dbPassword = '/run/secrets/database_password'
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
