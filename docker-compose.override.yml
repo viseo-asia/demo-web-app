@@ -1,0 +1,18 @@
+version: "3.1"
+
+services:
+
+  web:
+    build: .
+    ports:
+      - "5001:3001"
+    secrets:
+      - database_username
+      - database_password
+
+secrets:
+  database_username:
+    file: ./test/fixtures/secrets/database_username.txt
+  database_password:
+    file: ./test/fixtures/secrets/database_password.txt
+

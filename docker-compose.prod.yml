@@ -1,0 +1,54 @@
+version: "3.1"
+
+services:
+
+  web:
+    image: local.dtr/viseo/demo-web-app:latest
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 1s
+        failure_action: pause
+        monitor: 0s
+        # Docker ee 17.09 coming soon...
+        # order: start-first
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 200M
+      restart_policy:
+        condition: on-failure
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--output", "/dev/null", "http://localhost:3001"]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+    ports:
+      - "3001:3001"
+    networks:
+      - webnet
+      - tick_monitoring_net
+      # - logging_scalyr
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "tcp://127.0.0.1:601"
+    secrets:
+      - database_username
+      - database_password
+
+secrets:
+  database_username:
+    external: True
+  database_password:
+    external: True
+
+networks:
+  webnet:
+  tick_monitoring_net:
+    external:
+      name: tick_monitoring_net
+  # logging_scalyr:
+    # external:
+      # name: logging_scalyr
