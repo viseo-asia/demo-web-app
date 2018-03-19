@@ -35,14 +35,10 @@ services:
       options:
         syslog-address: "tcp://127.0.0.1:601"
     secrets:
-      - database_username
-      - database_password
+      - dbusername.json
+      - dbpassword.json
 
 secrets:
-  # database_username:
-  #   external: True
-  # database_password:
-  #   external: True
   dbusername.json:
     external: True
   dbpassword.json:
