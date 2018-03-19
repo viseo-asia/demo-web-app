@@ -20,6 +20,7 @@ RUN \
 
 # Application setup
 COPY bin ${APP_DIR}/bin
+COPY config ${APP_DIR}/config
 COPY public ${APP_DIR}/public
 COPY routes ${APP_DIR}/routes
 COPY views ${APP_DIR}/views

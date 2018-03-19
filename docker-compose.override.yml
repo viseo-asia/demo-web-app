@@ -7,12 +7,18 @@ services:
     ports:
       - "5001:3001"
     secrets:
-      - database_username
-      - database_password
+      # - database_username
+      # - database_password
+      - dbusername.json
+      - dbpassword.json
 
 secrets:
-  database_username:
-    file: ./test/fixtures/secrets/database_username.txt
-  database_password:
-    file: ./test/fixtures/secrets/database_password.txt
+  # database_username:
+    # file: ./test/fixtures/secrets/database_username.txt
+  # database_password:
+    # file: ./test/fixtures/secrets/database_password.txt
+  dbusername.json:
+    file: ./test/fixtures/secrets/dbusername.json
+  dbpassword.json:
+    file: ./test/fixtures/secrets/dbpassword.json
 

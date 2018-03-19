@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// dotenv is used in local dev environment to load env vars from .env file - non local env uses Docker EE secrets
+require('dotenv').config()
+const config = require('./config/default')
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 

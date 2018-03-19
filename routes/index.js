@@ -3,6 +3,7 @@ const router = express.Router();
 const os = require('os')
 const Lynx = require('lynx')
 
+const config = require('../config/default')
 const metrics = new Lynx('telegraf', 8125)
 
 // secrets
@@ -10,8 +11,10 @@ const metrics = new Lynx('telegraf', 8125)
 // const fs = require('fs')
 // const dbUsername = fs.readFileSync('/run/secrets/database_username')
 // const dbPassword = fs.readFileSync('/run/secrets/database_password')
-const dbUsername = '/run/secrets/database_username'
-const dbPassword = '/run/secrets/database_password'
+// const dbUsername = '/run/secrets/database_username'
+// const dbPassword = '/run/secrets/database_password'
+const dbUsername = config.get('database').dbusername
+const dbPassword = config.get('database').dbpassword 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

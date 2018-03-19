@@ -32,8 +32,10 @@ Demo Web App
 
 These two we'll use the command line
 
-- `echo "dbuser" | docker secret create database_username -`
-- `echo "abc123xyz" | docker secret create database_password -`
+<!-- - `echo "dbuser" | docker secret create database_username -` -->
+<!-- - `echo "abc123xyz" | docker secret create database_password -` -->
+- `echo '{ "database": {"dbusername": "dbusr"} }' | docker secret create dbusername.json -`
+- `echo '{ "database": {"dbpassword": "dbpwd"} }' | docker secret create dbpassword.json -`
 
 ## Create Docker Stack:
 

@@ -39,9 +39,13 @@ services:
       - database_password
 
 secrets:
-  database_username:
+  # database_username:
+  #   external: True
+  # database_password:
+  #   external: True
+  dbusername.json:
     external: True
-  database_password:
+  dbpassword.json:
     external: True
 
 networks:
