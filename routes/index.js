@@ -19,6 +19,7 @@ const dbPassword = config.get('database').dbpassword
 /* GET home page. */
 router.get('/', function(req, res, next) {
   metrics.increment('service.home')
+  console.log('Debug on page load')
   res.render('index', { 
     title: 'Viseo Hong Kong - Digital Innovation Labs', 
     hostname: os.hostname, 
